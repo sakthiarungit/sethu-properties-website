@@ -9,7 +9,13 @@
     "dist/index.js": {
       "runtime": "nodejs20.x",
       "memory": 1024,
-      "maxDuration": 60
+      "maxDuration": 30
     }
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/dist/index.js"
+    }
+  ]
 }
