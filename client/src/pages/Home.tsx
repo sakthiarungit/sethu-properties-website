@@ -4,7 +4,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Building2, Shield, Smartphone, Home as HomeIcon, TrendingUp, FileCheck, Users, CheckCircle2, ArrowRight } from "lucide-react";
 
-const heroImage = "https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?w=1600&h=900&fit=crop";
+const heroImage = "/Hero_image_modern_apartments_ef8358ce.png";
 
 export default function Home() {
   const valuePropositions = [
