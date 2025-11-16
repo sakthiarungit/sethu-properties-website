@@ -99,7 +99,19 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // Export for Vercel serverless functions
+// Must be named export 'handler' or default export function
 export default async (req: any, res: any) => {
-  const app = await getApp();
-  return app(req, res);
+  try {
+    const app = await getApp();
+    // Call the Express app as a request handler
+    return new Promise<void>((resolve) => {
+      app(req, res);
+      // Give it time to process
+      res.on('finish', resolve);
+      res.on('error', resolve);
+    });
+  } catch (error) {
+    console.error("Handler error:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
 };
