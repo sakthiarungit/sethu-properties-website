@@ -80,11 +80,11 @@ export default function Services() {
 
   return (
     <div className="min-h-screen">
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-services-page-title">Our Services</h1>
-            <p className="text-xl text-muted-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-services-page-title">Our Services</h1>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
               Comprehensive property solutions designed to make ownership and investment stress-free
             </p>
           </div>
@@ -92,31 +92,31 @@ export default function Services() {
       </section>
 
       {services.map((service, index) => (
-        <section key={index} className={`py-20 ${index % 2 === 0 ? 'bg-background' : 'bg-muted/30'}`}>
-          <div className="container mx-auto px-6">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
+        <section key={index} className={`py-12 sm:py-20 ${index % 2 === 0 ? 'bg-background' : 'bg-muted/30'}`}>
+          <div className="container mx-auto px-4 sm:px-6">
+            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center max-w-6xl mx-auto ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
               <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center">
-                    <service.icon className="h-7 w-7 text-primary" />
+                <div className="flex items-center gap-3 mb-4 sm:mb-6">
+                  <div className="w-12 sm:w-14 h-12 sm:h-14 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <service.icon className="h-6 sm:h-7 w-6 sm:w-7 text-primary" />
                   </div>
-                  <h2 className="text-3xl font-bold" data-testid={`text-service-${index}-title`}>{service.title}</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold" data-testid={`text-service-${index}-title`}>{service.title}</h2>
                 </div>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+                <p className="text-base sm:text-lg text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                   {service.description}
                 </p>
-                <div className="space-y-3 mb-8">
+                <div className="space-y-2 sm:space-y-3 mb-6 sm:mb-8">
                   {service.features.map((feature, featureIndex) => (
                     <div key={featureIndex} className="flex items-start gap-3" data-testid={`feature-${index}-${featureIndex}`}>
                       <div className="flex-shrink-0 mt-1">
-                        <CheckCircle2 className="h-5 w-5 text-primary" />
+                        <CheckCircle2 className="h-5 w-5 text-primary flex-shrink-0" />
                       </div>
-                      <p className="text-muted-foreground">{feature}</p>
+                      <p className="text-sm sm:text-base text-muted-foreground">{feature}</p>
                     </div>
                   ))}
                 </div>
                 <Link href="/contact">
-                  <Button className="bg-primary text-primary-foreground" data-testid={`button-get-started-${index}`}>
+                  <Button className="bg-primary text-primary-foreground text-sm sm:text-base w-full sm:w-auto" data-testid={`button-get-started-${index}`}>
                     Get Started
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
@@ -126,7 +126,8 @@ export default function Services() {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="rounded-lg shadow-lg w-full h-auto"
+                  className="rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 w-full h-auto"
+                  loading="lazy"
                   data-testid={`img-service-${index}`}
                 />
               </div>
@@ -135,16 +136,16 @@ export default function Services() {
         </section>
       ))}
 
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-services-title">Ready to Experience Our Services?</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+      <section className="py-12 sm:py-20 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4" data-testid="text-cta-services-title">Ready to Experience Our Services?</h2>
+          <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto opacity-90">
             Let us help you manage, grow, and protect your property investments
           </p>
           <Link href="/contact">
-            <Button size="lg" variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0" data-testid="button-cta-services">
+            <Button size="lg" variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0 text-sm sm:text-base w-full sm:w-auto" data-testid="button-cta-services">
               Schedule Free Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5" />
             </Button>
           </Link>
         </div>
