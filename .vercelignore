@@ -1,0 +1,14 @@
+.git
+.gitignore
+.env.example
+README.md
+node_modules
+server
+shared
+attached_assets
+.replit
+replit.md
+drizzle.config.ts
+components.json
+design_guidelines.md
+postcss.config.js
