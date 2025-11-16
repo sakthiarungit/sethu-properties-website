@@ -90,14 +90,16 @@ export default function Home() {
       </section>
 
       {/* Features Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {features.map((feature, idx) => (
-              <div key={idx} className="bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-gray-200">
-                <feature.icon className="h-12 w-12 text-blue-600 mb-4" />
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-gray-600">{feature.description}</p>
+              <div key={idx} className="group bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-lg border border-gray-100 transition-all duration-300 ease-out hover:-translate-y-1">
+                <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-50 rounded-lg mb-4 group-hover:bg-blue-100 transition-colors">
+                  <feature.icon className="h-7 w-7 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold mb-2 text-gray-900">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -105,28 +107,28 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Our Services</h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Our Services</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Comprehensive property solutions designed to meet all your real estate needs
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, idx) => (
-              <Card key={idx} className="border border-gray-200 hover:shadow-lg transition-shadow">
+              <Card key={idx} className="group border border-gray-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 ease-out overflow-hidden">
                 <CardHeader>
-                  <div className="flex items-start justify-between">
-                    <service.icon className="h-8 w-8 text-blue-600" />
+                  <div className="flex items-center justify-center w-12 h-12 rounded-lg bg-blue-50 group-hover:bg-blue-100 transition-colors mb-2">
+                    <service.icon className="h-6 w-6 text-blue-600" />
                   </div>
-                  <CardTitle className="text-xl mt-4">{service.title}</CardTitle>
+                  <CardTitle className="text-xl text-gray-900">{service.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-gray-600">{service.description}</p>
+                  <p className="text-gray-600 leading-relaxed mb-4">{service.description}</p>
                   <Link href="/services">
-                    <Button variant="ghost" className="p-0 h-auto text-blue-600 hover:text-blue-700 mt-4">
+                    <Button variant="ghost" className="p-0 h-auto text-blue-600 hover:text-blue-700 group-hover:translate-x-1 transition-transform">
                       Learn More <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                   </Link>
@@ -138,26 +140,29 @@ export default function Home() {
       </section>
 
       {/* Service Areas Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Service Areas</h2>
-            <p className="text-lg text-gray-600">We serve property owners across South Tamil Nadu</p>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Service Areas</h2>
+            <p className="text-lg text-gray-600 leading-relaxed">We serve property owners across South Tamil Nadu</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
             {areas.map((area, idx) => (
-              <div key={idx} className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 text-center">
-                <MapPin className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                <h3 className="text-lg font-semibold">{area}</h3>
+              <div key={idx} className="group bg-white p-6 rounded-xl shadow-sm hover:shadow-md border border-gray-100 text-center transition-all duration-300 ease-out hover:-translate-y-1 cursor-pointer">
+                <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-50 rounded-lg mb-3 group-hover:bg-blue-100 transition-colors">
+                  <MapPin className="h-6 w-6 text-blue-600" />
+                </div>
+                <h3 className="text-base font-semibold text-gray-900">{area}</h3>
               </div>
             ))}
           </div>
 
-          <div className="text-center mt-8">
+          <div className="text-center mt-8 sm:mt-12">
             <Link href="/service-areas">
-              <Button variant="outline" className="border-blue-600 text-blue-600 hover:bg-blue-50">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white transition-all duration-300">
                 View Detailed Areas
+                <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </Link>
           </div>
@@ -165,13 +170,13 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-blue-600 text-white">
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {stats.map((stat, idx) => (
-              <div key={idx}>
-                <div className="text-4xl sm:text-5xl font-bold mb-2">{stat.number}</div>
-                <p className="text-lg text-blue-100">{stat.label}</p>
+              <div key={idx} className="relative">
+                <div className="text-4xl sm:text-5xl md:text-6xl font-bold mb-3">{stat.number}</div>
+                <p className="text-base sm:text-lg text-blue-100 font-medium">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -179,14 +184,15 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-white to-gray-50">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">Why Choose Sethu Properties?</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900">Why Choose Sethu Properties?</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">Discover what sets us apart in the real estate industry</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div className="space-y-5">
               {[
                 "Expert knowledge of South Tamil Nadu real estate market",
                 "Transparent and ethical business practices",
@@ -194,20 +200,22 @@ export default function Home() {
                 "Dedicated support for NRI property owners",
                 "Comprehensive property management services",
               ].map((item, idx) => (
-                <div key={idx} className="flex gap-4">
-                  <CheckCircle className="h-6 w-6 text-green-600 flex-shrink-0 mt-1" />
-                  <p className="text-gray-700 text-lg">{item}</p>
+                <div key={idx} className="flex gap-4 items-start group">
+                  <div className="w-6 h-6 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-green-200 transition-colors">
+                    <CheckCircle className="h-5 w-5 text-green-600" />
+                  </div>
+                  <p className="text-gray-700 text-base sm:text-lg leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
 
-            <div className="bg-gray-50 p-8 rounded-lg border border-gray-200">
-              <h3 className="text-2xl font-bold mb-6">Get Started Today</h3>
-              <p className="text-gray-600 mb-6">
+            <div className="bg-gradient-to-br from-blue-50 to-blue-100 p-8 rounded-2xl border border-blue-200 shadow-sm hover:shadow-md transition-shadow">
+              <h3 className="text-2xl font-bold mb-4 text-gray-900">Get Started Today</h3>
+              <p className="text-gray-700 mb-6 leading-relaxed">
                 Schedule a free consultation with our property experts. We're here to help with all your property needs.
               </p>
               <Link href="/contact">
-                <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full">
+                <Button className="bg-blue-600 hover:bg-blue-700 text-white w-full font-semibold transition-all duration-300 hover:shadow-lg">
                   Contact Us Now
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
@@ -218,28 +226,39 @@ export default function Home() {
       </section>
 
       {/* Contact Info Section */}
-      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-4">Get In Touch</h2>
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-gray-900">Get In Touch</h2>
+            <p className="text-lg text-gray-600">We're always here to help and answer any questions</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-gray-200 text-center">
-              <Phone className="h-8 w-8 text-blue-600 mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Phone</h3>
-              <p className="text-gray-600">+91 98765 43210</p>
+            <div className="group bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-lg border border-gray-100 text-center transition-all duration-300 ease-out hover:-translate-y-1">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-50 rounded-lg mb-4 group-hover:bg-blue-100 transition-colors">
+                <Phone className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="font-semibold mb-2 text-gray-900">Phone</h3>
+              <a href="tel:+919876543210" className="text-gray-600 hover:text-blue-600 transition-colors">
+                +91 98765 43210
+              </a>
             </div>
 
-            <div className="bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-gray-200 text-center">
-              <Mail className="h-8 w-8 text-blue-600 mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Email</h3>
-              <p className="text-gray-600">info@sethuproperties.com</p>
+            <div className="group bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-lg border border-gray-100 text-center transition-all duration-300 ease-out hover:-translate-y-1">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-50 rounded-lg mb-4 group-hover:bg-blue-100 transition-colors">
+                <Mail className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="font-semibold mb-2 text-gray-900">Email</h3>
+              <a href="mailto:info@sethuproperties.com" className="text-gray-600 hover:text-blue-600 transition-colors break-all">
+                info@sethuproperties.com
+              </a>
             </div>
 
-            <div className="bg-white p-6 sm:p-8 rounded-lg shadow-sm border border-gray-200 text-center">
-              <MapPin className="h-8 w-8 text-blue-600 mx-auto mb-4" />
-              <h3 className="font-semibold mb-2">Hours</h3>
+            <div className="group bg-white p-6 sm:p-8 rounded-xl shadow-sm hover:shadow-lg border border-gray-100 text-center transition-all duration-300 ease-out hover:-translate-y-1">
+              <div className="inline-flex items-center justify-center w-14 h-14 bg-blue-50 rounded-lg mb-4 group-hover:bg-blue-100 transition-colors">
+                <MapPin className="h-7 w-7 text-blue-600" />
+              </div>
+              <h3 className="font-semibold mb-2 text-gray-900">Hours</h3>
               <p className="text-gray-600">Mon-Sat: 9:00 AM - 6:00 PM</p>
             </div>
           </div>
