@@ -104,19 +104,19 @@ export default function HowItWorks() {
 
   return (
     <div className="min-h-screen">
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-how-it-works-title">How It Works</h1>
-            <p className="text-xl text-muted-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-how-it-works-title">How It Works</h1>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
               Working with Sethu Properties is easy, transparent, and worry-free. Here's how we support you at every step.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-5xl mx-auto space-y-16">
             {steps.map((step, index) => (
               <div key={index} className="relative" data-testid={`step-${index}`}>
@@ -164,26 +164,26 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-tech-features-title">Technology That Keeps You Informed</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section className="py-12 sm:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4" data-testid="text-tech-features-title">Technology That Keeps You Informed</h2>
+            <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto">
               We leverage modern technology to provide you with transparency and convenience
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 max-w-6xl mx-auto">
             {techFeatures.map((feature, index) => (
-              <Card key={index} className="hover-elevate" data-testid={`card-tech-${index}`}>
+              <Card key={index} className="hover-elevate transition-all duration-300 border-none shadow-sm hover:shadow-md" data-testid={`card-tech-${index}`}>
                 <CardHeader>
-                  <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center mb-4">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-3 sm:mb-4">
                     <feature.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-lg">{feature.title}</CardTitle>
+                  <CardTitle className="text-base sm:text-lg">{feature.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">{feature.description}</p>
+                  <p className="text-xs sm:text-sm text-muted-foreground">{feature.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -191,16 +191,16 @@ export default function HowItWorks() {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-how-title">Ready to Experience Our Process?</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+      <section className="py-12 sm:py-20 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3 sm:mb-4" data-testid="text-cta-how-title">Ready to Experience Our Process?</h2>
+          <p className="text-base sm:text-lg mb-6 sm:mb-8 max-w-2xl mx-auto opacity-90">
             Start with a free consultation and see how we can help you
           </p>
           <Link href="/contact">
-            <Button size="lg" variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0" data-testid="button-cta-how">
+            <Button size="lg" variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0 text-sm sm:text-base w-full sm:w-auto" data-testid="button-cta-how">
               Get Started Today
-              <ArrowRight className="ml-2 h-5 w-5" />
+              <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5" />
             </Button>
           </Link>
         </div>
