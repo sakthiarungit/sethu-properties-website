@@ -1,7 +1,6 @@
 import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
-import serverless from "serverless-http";
 
 const app = express();
 
@@ -47,9 +46,7 @@ app.use((req, res, next) => {
   next();
 });
 
-let handler: any = null;
-
-(async () => {
+async function initializeApp() {
   const server = await registerRoutes(app);
 
   app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
@@ -76,11 +73,33 @@ let handler: any = null;
       log(`serving on port ${port}`);
     });
   } else {
-    // In production, serve static files and wrap with serverless-http
+    // In production, serve static files
     serveStatic(app);
-    handler = serverless(app);
   }
-})();
 
-// Export handler for Vercel serverless functions
-export default handler;
+  return app;
+}
+
+// Initialize app and export for both development and serverless production
+let appInstance: express.Application | null = null;
+
+async function getApp() {
+  if (!appInstance) {
+    appInstance = await initializeApp();
+  }
+  return appInstance;
+}
+
+// For local development (npm run dev)
+if (process.env.NODE_ENV === "development") {
+  initializeApp().catch((err) => {
+    console.error("Failed to initialize app:", err);
+    process.exit(1);
+  });
+}
+
+// Export for Vercel serverless functions
+export default async (req: any, res: any) => {
+  const app = await getApp();
+  return app(req, res);
+};
