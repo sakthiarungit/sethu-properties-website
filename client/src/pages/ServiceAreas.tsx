@@ -63,44 +63,48 @@ export default function ServiceAreas() {
   ];
 
   return (
-    <div className="min-h-screen">
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-service-areas-page-title">Our Service Areas</h1>
-            <p className="text-xl text-muted-foreground">
+    <div className="w-full min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-service-areas-page-title">
+              Our Service Areas
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
               Serving property owners across South Tamil Nadu with local expertise and personalized service
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      {/* Service Areas Grid */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
             {serviceAreas.map((area, index) => (
-              <Card key={index} className="hover-elevate" data-testid={`card-service-area-${index}`}>
+              <Card key={index} className="border border-gray-200 hover:shadow-lg transition-shadow" data-testid={`card-service-area-${index}`}>
                 <CardHeader>
-                  <div className="flex items-center gap-4 mb-2">
-                    <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <area.icon className="h-7 w-7 text-primary" />
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <area.icon className="h-6 sm:h-7 w-6 sm:w-7 text-blue-600" />
                     </div>
                     <div>
-                      <CardTitle className="text-2xl">{area.name}</CardTitle>
+                      <CardTitle className="text-xl sm:text-2xl">{area.name}</CardTitle>
                     </div>
                   </div>
-                  <CardDescription className="text-base leading-relaxed pt-2">
+                  <p className="text-base sm:text-lg text-gray-600 leading-relaxed">
                     {area.description}
-                  </CardDescription>
+                  </p>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2">
-                    <h4 className="font-semibold text-sm text-muted-foreground mb-3">Key Highlights:</h4>
+                  <div className="space-y-3">
+                    <h4 className="font-semibold text-sm sm:text-base text-gray-700">Key Highlights:</h4>
                     <ul className="space-y-2">
                       {area.highlights.map((highlight, hIndex) => (
                         <li key={hIndex} className="flex items-start gap-2">
-                          <MapPin className="h-4 w-4 text-accent flex-shrink-0 mt-1" />
-                          <span className="text-sm text-muted-foreground">{highlight}</span>
+                          <MapPin className="h-4 w-4 text-blue-600 flex-shrink-0 mt-1" />
+                          <span className="text-sm sm:text-base text-gray-600">{highlight}</span>
                         </li>
                       ))}
                     </ul>
@@ -112,34 +116,38 @@ export default function ServiceAreas() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-2">
-              <CardHeader>
-                <CardTitle className="text-3xl text-center" data-testid="text-expanding-title">Continuously Expanding</CardTitle>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                  We are continuously expanding across South Tamil Nadu to serve more communities with personalized property solutions. Our local expertise combined with global standards ensures that wherever you own property, we can help you manage and grow your investments.
-                </p>
-                <p className="text-muted-foreground">
-                  If your area isn't listed above, please contact us to discuss how we can assist you.
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+      {/* Expanding Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <Card className="border border-gray-200">
+            <CardHeader>
+              <CardTitle className="text-2xl sm:text-3xl md:text-4xl text-center" data-testid="text-expanding-title">
+                Continuously Expanding
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="text-center space-y-4">
+              <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                We are continuously expanding across South Tamil Nadu to serve more communities with personalized property solutions. Our local expertise combined with global standards ensures that wherever you own property, we can help you manage and grow your investments.
+              </p>
+              <p className="text-base sm:text-lg text-gray-700">
+                If your area isn't listed above, please contact us to discuss how we can assist you.
+              </p>
+            </CardContent>
+          </Card>
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-areas-title">Own Property in South Tamil Nadu?</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+      {/* CTA Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6" data-testid="text-cta-areas-title">
+            Own Property in South Tamil Nadu?
+          </h2>
+          <p className="text-base sm:text-lg text-blue-100 max-w-2xl mx-auto mb-8">
             Let us help you manage, sell, or lease your property with local expertise
           </p>
           <Link href="/contact">
-            <Button size="lg" variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0" data-testid="button-cta-areas">
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100" data-testid="button-cta-areas">
               Contact Us Today
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

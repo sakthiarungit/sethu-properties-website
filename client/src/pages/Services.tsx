@@ -2,11 +2,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Home, Building2, Users, TrendingUp, FileCheck, CheckCircle2, ArrowRight } from "lucide-react";
-import propertyManagementImg from "@assets/generated_images/Property_management_service_898311ef.png";
-import realEstateSalesImg from "@assets/generated_images/Real_estate_sales_service_ab185173.png";
-import rentalLeasingImg from "@assets/generated_images/Rental_leasing_service_2be045f2.png";
-import investmentAdvisoryImg from "@assets/generated_images/Investment_advisory_service_07764d92.png";
-import valuationServicesImg from "@assets/generated_images/Valuation_service_9ffafc1e.png";
 
 export default function Services() {
   const services = [
@@ -14,7 +9,6 @@ export default function Services() {
       icon: Home,
       title: "Property Management Services",
       description: "We take care of your property like it's our own. Our end-to-end property management solutions help you maintain, monitor, and grow your property assets—without lifting a finger.",
-      image: propertyManagementImg,
       features: [
         "Residential Property Management (apartments, villas, independent homes)",
         "Plot Monitoring & Reporting",
@@ -29,7 +23,6 @@ export default function Services() {
       icon: Building2,
       title: "Real Estate Sales",
       description: "Ready to sell or invest? We'll handle the process from start to finish. We help you buy or sell homes, plots, and commercial properties with complete transparency and local expertise.",
-      image: realEstateSalesImg,
       features: [
         "Apartments, Villas, and Independent Home Sales",
         "Plot Sales & Development Advisory",
@@ -42,7 +35,6 @@ export default function Services() {
       icon: Users,
       title: "Rental & Leasing Solutions",
       description: "Hassle-free rental income, without the day-to-day stress. We manage tenant sourcing, background checks, rental agreements, and monthly rent collection so you can relax.",
-      image: rentalLeasingImg,
       features: [
         "Tenant Identification & Verification",
         "Rental Documentation & Agreements",
@@ -55,7 +47,6 @@ export default function Services() {
       icon: TrendingUp,
       title: "Investment Advisory",
       description: "Turn your property into a smart long-term asset. We guide investors and landowners on how to maximize returns, select the right opportunities, and make informed decisions.",
-      image: investmentAdvisoryImg,
       features: [
         "ROI and Asset Management Consulting",
         "Land Banking Strategy",
@@ -68,7 +59,6 @@ export default function Services() {
       icon: FileCheck,
       title: "Valuation Services",
       description: "Know your property's true market value. We provide independent assessments based on real-time market data and on-ground insights.",
-      image: valuationServicesImg,
       features: [
         "Residential Property Valuations",
         "Commercial Property Appraisals",
@@ -79,70 +69,75 @@ export default function Services() {
   ];
 
   return (
-    <div className="min-h-screen">
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-services-page-title">Our Services</h1>
-            <p className="text-xl text-muted-foreground">
+    <div className="w-full min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-services-page-title">
+              Our Services
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
               Comprehensive property solutions designed to make ownership and investment stress-free
             </p>
           </div>
         </div>
       </section>
 
-      {services.map((service, index) => (
-        <section key={index} className={`py-20 ${index % 2 === 0 ? 'bg-background' : 'bg-muted/30'}`}>
-          <div className="container mx-auto px-6">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-              <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center">
-                    <service.icon className="h-7 w-7 text-primary" />
-                  </div>
-                  <h2 className="text-3xl font-bold" data-testid={`text-service-${index}-title`}>{service.title}</h2>
-                </div>
-                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  {service.description}
-                </p>
-                <div className="space-y-3 mb-8">
-                  {service.features.map((feature, featureIndex) => (
-                    <div key={featureIndex} className="flex items-start gap-3" data-testid={`feature-${index}-${featureIndex}`}>
-                      <div className="flex-shrink-0 mt-1">
-                        <CheckCircle2 className="h-5 w-5 text-primary" />
-                      </div>
-                      <p className="text-muted-foreground">{feature}</p>
+      {/* Services Grid */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {services.map((service, index) => (
+              <Card key={index} className="border border-gray-200 hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                      <service.icon className="h-6 w-6 text-blue-600" />
                     </div>
-                  ))}
-                </div>
-                <Link href="/contact">
-                  <Button className="bg-primary text-primary-foreground" data-testid={`button-get-started-${index}`}>
-                    Get Started
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
-              </div>
-              <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="rounded-lg shadow-lg w-full h-auto"
-                  data-testid={`img-service-${index}`}
-                />
-              </div>
-            </div>
+                    <CardTitle className="text-xl md:text-2xl" data-testid={`text-service-${index}-title`}>
+                      {service.title}
+                    </CardTitle>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-gray-600 leading-relaxed text-sm md:text-base">
+                    {service.description}
+                  </p>
+                  <div className="space-y-3 pt-2">
+                    {service.features.map((feature, featureIndex) => (
+                      <div key={featureIndex} className="flex items-start gap-3" data-testid={`feature-${index}-${featureIndex}`}>
+                        <div className="flex-shrink-0 mt-1">
+                          <CheckCircle2 className="h-5 w-5 text-green-600" />
+                        </div>
+                        <p className="text-gray-600 text-sm md:text-base">{feature}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <Link href="/contact">
+                    <Button className="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white" data-testid={`button-get-started-${index}`}>
+                      Get Started
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
 
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-services-title">Ready to Experience Our Services?</h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
+      {/* CTA Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-6xl mx-auto text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6" data-testid="text-cta-services-title">
+            Ready to Experience Our Services?
+          </h2>
+          <p className="text-base sm:text-lg text-blue-100 max-w-2xl mx-auto mb-8">
             Let us help you manage, grow, and protect your property investments
           </p>
           <Link href="/contact">
-            <Button size="lg" variant="outline" className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0" data-testid="button-cta-services">
+            <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100" data-testid="button-cta-services">
               Schedule Free Consultation
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

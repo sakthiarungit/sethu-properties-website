@@ -79,37 +79,44 @@ export default function Contact() {
   ];
 
   return (
-    <div className="min-h-screen">
-      <section className="py-12 sm:py-16 md:py-20 bg-muted/30">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-contact-title">Contact Us</h1>
-            <p className="text-sm sm:text-base md:text-lg text-muted-foreground px-4">
+    <div className="w-full min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6 bg-gradient-to-br from-blue-600 to-blue-800 text-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-contact-title">
+              Contact Us
+            </h1>
+            <p className="text-base sm:text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
               Get in touch with us for a free consultation. We're here to help with all your property needs.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-12 sm:py-16 md:py-20 bg-background">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto">
+      {/* Contact Content Section */}
+      <section className="w-full py-12 sm:py-16 md:py-20 px-4 sm:px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
+            {/* Contact Form */}
             <div>
-              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6" data-testid="text-form-title">Send Us a Message</h2>
-              <Card>
-                <CardContent className="pt-6">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" data-testid="text-form-title">
+                Send Us a Message
+              </h2>
+              <Card className="border border-gray-200">
+                <CardContent className="pt-6 sm:pt-8">
                   <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
                       <FormField
                         control={form.control}
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Name *</FormLabel>
+                            <FormLabel className="text-sm sm:text-base">Name *</FormLabel>
                             <FormControl>
-                              <Input placeholder="Your full name" {...field} data-testid="input-name" />
+                              <Input placeholder="Your full name" {...field} data-testid="input-name" className="h-10 sm:h-11" />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-xs sm:text-sm" />
                           </FormItem>
                         )}
                       />
@@ -119,11 +126,11 @@ export default function Contact() {
                         name="email"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Email *</FormLabel>
+                            <FormLabel className="text-sm sm:text-base">Email *</FormLabel>
                             <FormControl>
-                              <Input type="email" placeholder="your.email@example.com" {...field} data-testid="input-email" />
+                              <Input type="email" placeholder="your.email@example.com" {...field} data-testid="input-email" className="h-10 sm:h-11" />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-xs sm:text-sm" />
                           </FormItem>
                         )}
                       />
@@ -133,11 +140,11 @@ export default function Contact() {
                         name="phone"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Phone Number *</FormLabel>
+                            <FormLabel className="text-sm sm:text-base">Phone Number *</FormLabel>
                             <FormControl>
-                              <Input type="tel" placeholder="+91 98765 43210" {...field} data-testid="input-phone" />
+                              <Input type="tel" placeholder="+91 98765 43210" {...field} data-testid="input-phone" className="h-10 sm:h-11" />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-xs sm:text-sm" />
                           </FormItem>
                         )}
                       />
@@ -147,10 +154,10 @@ export default function Contact() {
                         name="propertyType"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Property Type</FormLabel>
+                            <FormLabel className="text-sm sm:text-base">Property Type</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value || undefined}>
                               <FormControl>
-                                <SelectTrigger data-testid="select-property-type">
+                                <SelectTrigger data-testid="select-property-type" className="h-10 sm:h-11">
                                   <SelectValue placeholder="Select property type" />
                                 </SelectTrigger>
                               </FormControl>
@@ -162,7 +169,7 @@ export default function Contact() {
                                 <SelectItem value="commercial">Commercial Property</SelectItem>
                               </SelectContent>
                             </Select>
-                            <FormMessage />
+                            <FormMessage className="text-xs sm:text-sm" />
                           </FormItem>
                         )}
                       />
@@ -172,10 +179,10 @@ export default function Contact() {
                         name="serviceInterest"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Service Interest *</FormLabel>
+                            <FormLabel className="text-sm sm:text-base">Service Interest *</FormLabel>
                             <Select onValueChange={field.onChange} value={field.value}>
                               <FormControl>
-                                <SelectTrigger data-testid="select-service-interest">
+                                <SelectTrigger data-testid="select-service-interest" className="h-10 sm:h-11">
                                   <SelectValue placeholder="Select a service" />
                                 </SelectTrigger>
                               </FormControl>
@@ -188,7 +195,7 @@ export default function Contact() {
                                 <SelectItem value="general-inquiry">General Inquiry</SelectItem>
                               </SelectContent>
                             </Select>
-                            <FormMessage />
+                            <FormMessage className="text-xs sm:text-sm" />
                           </FormItem>
                         )}
                       />
@@ -198,23 +205,23 @@ export default function Contact() {
                         name="message"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Message *</FormLabel>
+                            <FormLabel className="text-sm sm:text-base">Message *</FormLabel>
                             <FormControl>
                               <Textarea
                                 placeholder="Tell us about your property needs..."
-                                className="min-h-[120px]"
+                                className="min-h-[100px] sm:min-h-[120px] resize-none"
                                 {...field}
                                 data-testid="textarea-message"
                               />
                             </FormControl>
-                            <FormMessage />
+                            <FormMessage className="text-xs sm:text-sm" />
                           </FormItem>
                         )}
                       />
 
                       <Button
                         type="submit"
-                        className="w-full bg-primary text-primary-foreground"
+                        className="w-full h-10 sm:h-11 bg-blue-600 hover:bg-blue-700 text-white text-sm sm:text-base"
                         disabled={contactMutation.isPending}
                         data-testid="button-submit-contact"
                       >
@@ -227,27 +234,30 @@ export default function Contact() {
               </Card>
             </div>
 
+            {/* Contact Information */}
             <div>
-              <h2 className="text-3xl font-bold mb-6" data-testid="text-contact-info-title">Contact Information</h2>
-              <div className="space-y-6">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" data-testid="text-contact-info-title">
+                Contact Information
+              </h2>
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => (
-                  <Card key={index} className="hover-elevate" data-testid={`card-contact-info-${index}`}>
+                  <Card key={index} className="border border-gray-200 hover:shadow-lg transition-shadow" data-testid={`card-contact-info-${index}`}>
                     <CardHeader>
                       <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <info.icon className="h-6 w-6 text-primary" />
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                          <info.icon className="h-5 sm:h-6 w-5 sm:w-6 text-blue-600" />
                         </div>
-                        <div>
-                          <CardTitle className="text-lg mb-1">{info.title}</CardTitle>
+                        <div className="flex-1">
+                          <CardTitle className="text-lg sm:text-xl mb-1">{info.title}</CardTitle>
                           {info.link ? (
                             <a
                               href={info.link}
-                              className="text-muted-foreground hover:text-foreground transition-colors"
+                              className="text-gray-600 hover:text-blue-600 transition-colors text-sm sm:text-base break-all"
                             >
                               {info.content}
                             </a>
                           ) : (
-                            <p className="text-muted-foreground">{info.content}</p>
+                            <p className="text-gray-600 text-sm sm:text-base">{info.content}</p>
                           )}
                         </div>
                       </div>
@@ -256,12 +266,12 @@ export default function Contact() {
                 ))}
               </div>
 
-              <Card className="mt-6 bg-primary text-primary-foreground border-0" data-testid="card-why-choose">
+              <Card className="mt-6 sm:mt-8 bg-gradient-to-br from-blue-600 to-blue-700 text-white border-0" data-testid="card-why-choose">
                 <CardHeader>
-                  <CardTitle>Why Choose Sethu Properties?</CardTitle>
-                  <CardDescription className="text-primary-foreground/80">
+                  <CardTitle className="text-xl sm:text-2xl">Why Choose Sethu Properties?</CardTitle>
+                  <p className="text-blue-100 text-sm sm:text-base leading-relaxed mt-3">
                     We combine deep local knowledge with global standards, offering transparent, tech-enabled property services that you can trust.
-                  </CardDescription>
+                  </p>
                 </CardHeader>
               </Card>
             </div>
