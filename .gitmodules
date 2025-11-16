@@ -1,0 +1,4 @@
+[submodule "sethu-properties-website"]
+	path = sethu-properties-website
+	url = https://github.com/sakthiarungit/sethu-properties-website.git
+	branch = main
