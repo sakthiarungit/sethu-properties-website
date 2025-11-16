@@ -5,7 +5,5 @@
   "env": {
     "NODE_ENV": "production"
   },
-  "static": {
-    "public": "dist/public"
-  }
+  "outputDirectory": "dist/public"
 }
