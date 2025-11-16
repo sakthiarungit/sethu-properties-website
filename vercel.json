@@ -1,8 +1,14 @@
 {
   "version": 2,
-  "buildCommand": "npm run build",
+  "buildCommand": "vite build",
   "installCommand": "npm ci",
   "env": {
     "NODE_ENV": "production"
-  }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/api"
+    }
+  ]
 }
