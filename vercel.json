@@ -1,8 +1,0 @@
-{
-  "version": 2,
-  "buildCommand": "vite build",
-  "installCommand": "npm ci",
-  "env": {
-    "NODE_ENV": "production"
-  }
-}
