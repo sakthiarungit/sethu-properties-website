@@ -5,10 +5,15 @@
   "env": {
     "NODE_ENV": "production"
   },
+  "public": "dist/public",
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "/api"
+      "source": "/api/:path*",
+      "destination": "/api/:path*"
+    },
+    {
+      "source": "/((?!api).*)",
+      "destination": "/index.html"
     }
   ]
 }
