@@ -27,13 +27,13 @@ export function Navigation() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-white shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex h-14 sm:h-16 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-6">
+        <div className="flex h-16 items-center justify-between">
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="Sethu Properties" className="h-5 w-auto" />
-              <span className="text-sm sm:text-base font-bold text-gray-900 hidden sm:inline">Sethu Properties</span>
+            <div className="flex items-center gap-3 hover-elevate active-elevate-2 rounded-md px-2 py-1 -mx-2">
+              <img src="/logo.png" alt="Sethu Properties" className="h-10 w-auto" />
+              <span className="text-xl font-bold text-foreground">Sethu Properties</span>
             </div>
           </Link>
 
@@ -41,8 +41,8 @@ export function Navigation() {
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} data-testid={`link-${link.label.toLowerCase().replace(/\s+/g, "-")}`}>
                 <Button
-                  variant="ghost"
-                  className={`text-sm font-medium ${isActive(link.href) ? "text-blue-600 bg-blue-50" : "text-gray-700 hover:text-blue-600"}`}
+                  variant={isActive(link.href) ? "secondary" : "ghost"}
+                  className="text-sm font-medium"
                 >
                   {link.label}
                 </Button>
@@ -52,31 +52,31 @@ export function Navigation() {
 
           <div className="hidden md:block">
             <Link href="/contact" data-testid="button-cta-header">
-              <Button className="h-9 sm:h-10 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium">
+              <Button variant="default" className="bg-primary text-primary-foreground">
                 Free Consultation
               </Button>
             </Link>
           </div>
 
           <button
-            className="md:hidden p-2"
+            className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="button-mobile-menu"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="h-5 w-5 text-gray-700" /> : <Menu className="h-5 w-5 text-gray-700" />}
+            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden border-t bg-white">
-          <nav className="max-w-7xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex flex-col gap-1">
+        <div className="md:hidden border-t bg-background">
+          <nav className="container mx-auto px-6 py-4 flex flex-col gap-2">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} data-testid={`link-mobile-${link.label.toLowerCase().replace(/\s+/g, "-")}`}>
                 <Button
-                  variant="ghost"
-                  className={`w-full justify-start text-sm font-medium ${isActive(link.href) ? "text-blue-600 bg-blue-50" : "text-gray-700 hover:text-blue-600"}`}
+                  variant={isActive(link.href) ? "secondary" : "ghost"}
+                  className="w-full justify-start text-sm font-medium"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -85,7 +85,8 @@ export function Navigation() {
             ))}
             <Link href="/contact">
               <Button
-                className="w-full h-9 bg-blue-600 hover:bg-blue-700 text-white mt-2 text-sm font-medium"
+                variant="default"
+                className="w-full bg-primary text-primary-foreground mt-2"
                 onClick={() => setMobileMenuOpen(false)}
                 data-testid="button-cta-mobile"
               >
