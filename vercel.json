@@ -8,7 +8,11 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
+      "source": "/(?!.*\\.)(?!_next).*",
       "destination": "/index.html"
     }
   ]

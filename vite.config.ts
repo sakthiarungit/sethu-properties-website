@@ -3,13 +3,11 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import fs from "fs";
 import tailwindcss from "@tailwindcss/vite";
-import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
   plugins: [
     tailwindcss(),
     react(),
-    runtimeErrorOverlay(),
     {
       name: "copy-assets",
       apply: "build",
