@@ -28,12 +28,12 @@ export function Navigation() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-6">
-        <div className="flex h-16 items-center justify-between">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex h-14 items-center justify-between">
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-3 hover-elevate active-elevate-2 rounded-md px-2 py-1 -mx-2">
-              <img src="/logo.png" alt="Sethu Properties" className="h-10 w-auto" />
-              <span className="text-xl font-bold text-foreground">Sethu Properties</span>
+            <div className="flex items-center gap-2 hover-elevate active-elevate-2 rounded-md px-2 -mx-2">
+              <img src="/logo.png" alt="Sethu Properties" className="h-8 w-auto" />
+              <span className="text-lg font-bold text-foreground hidden sm:inline">Sethu Properties</span>
             </div>
           </Link>
 
