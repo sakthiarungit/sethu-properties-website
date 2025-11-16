@@ -80,22 +80,22 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-contact-title">Contact Us</h1>
-            <p className="text-xl text-muted-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-contact-title">Contact Us</h1>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground">
               Get in touch with us for a free consultation. We're here to help with all your property needs.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <section className="py-12 sm:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 max-w-6xl mx-auto">
             <div>
-              <h2 className="text-3xl font-bold mb-6" data-testid="text-form-title">Send Us a Message</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6" data-testid="text-form-title">Send Us a Message</h2>
               <Card>
                 <CardContent className="pt-6">
                   <Form {...form}>
@@ -228,26 +228,26 @@ export default function Contact() {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold mb-6" data-testid="text-contact-info-title">Contact Information</h2>
-              <div className="space-y-6">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6" data-testid="text-contact-info-title">Contact Information</h2>
+              <div className="space-y-4 sm:space-y-6">
                 {contactInfo.map((info, index) => (
-                  <Card key={index} className="hover-elevate" data-testid={`card-contact-info-${index}`}>
+                  <Card key={index} className="hover-elevate transition-all duration-300 border-none shadow-sm hover:shadow-md" data-testid={`card-contact-info-${index}`}>
                     <CardHeader>
-                      <div className="flex items-start gap-4">
-                        <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
-                          <info.icon className="h-6 w-6 text-primary" />
+                      <div className="flex items-start gap-3 sm:gap-4">
+                        <div className="w-11 sm:w-12 h-11 sm:h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <info.icon className="h-5 sm:h-6 w-5 sm:w-6 text-primary" />
                         </div>
                         <div>
-                          <CardTitle className="text-lg mb-1">{info.title}</CardTitle>
+                          <CardTitle className="text-base sm:text-lg mb-1">{info.title}</CardTitle>
                           {info.link ? (
                             <a
                               href={info.link}
-                              className="text-muted-foreground hover:text-foreground transition-colors"
+                              className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors break-all"
                             >
                               {info.content}
                             </a>
                           ) : (
-                            <p className="text-muted-foreground">{info.content}</p>
+                            <p className="text-xs sm:text-sm text-muted-foreground">{info.content}</p>
                           )}
                         </div>
                       </div>
@@ -256,10 +256,10 @@ export default function Contact() {
                 ))}
               </div>
 
-              <Card className="mt-6 bg-primary text-primary-foreground border-0" data-testid="card-why-choose">
+              <Card className="mt-4 sm:mt-6 bg-primary text-primary-foreground border-0" data-testid="card-why-choose">
                 <CardHeader>
-                  <CardTitle>Why Choose Sethu Properties?</CardTitle>
-                  <CardDescription className="text-primary-foreground/80">
+                  <CardTitle className="text-lg sm:text-xl">Why Choose Sethu Properties?</CardTitle>
+                  <CardDescription className="text-primary-foreground/80 text-sm sm:text-base">
                     We combine deep local knowledge with global standards, offering transparent, tech-enabled property services that you can trust.
                   </CardDescription>
                 </CardHeader>
