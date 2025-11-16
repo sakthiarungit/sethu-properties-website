@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import fs from "fs";
 import tailwindcss from "@tailwindcss/vite";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
@@ -9,6 +10,25 @@ export default defineConfig({
     tailwindcss(),
     react(),
     runtimeErrorOverlay(),
+    {
+      name: "copy-assets",
+      apply: "build",
+      enforce: "post",
+      async writeBundle() {
+        const srcDir = path.resolve(import.meta.dirname, "attached_assets/generated_images");
+        const destDir = path.resolve(import.meta.dirname, "dist");
+
+        if (fs.existsSync(srcDir)) {
+          const files = fs.readdirSync(srcDir);
+          files.forEach((file) => {
+            const src = path.join(srcDir, file);
+            const dest = path.join(destDir, file);
+            fs.copyFileSync(src, dest);
+          });
+          console.log(`✓ Copied ${files.length} asset files to dist`);
+        }
+      },
+    },
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [

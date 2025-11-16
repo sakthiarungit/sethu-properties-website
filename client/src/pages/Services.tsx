@@ -2,12 +2,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Home, Building2, Users, TrendingUp, FileCheck, CheckCircle2, ArrowRight } from "lucide-react";
-
-const propertyManagementImg = "/Property_management_service_898311ef.png";
-const realEstateSalesImg = "/Real_estate_sales_service_ab185173.png";
-const rentalLeasingImg = "/Rental_leasing_service_2be045f2.png";
-const investmentAdvisoryImg = "/Investment_advisory_service_07764d92.png";
-const valuationServicesImg = "/Valuation_service_9ffafc1e.png";
+import propertyManagementImg from "@assets/generated_images/Property_management_service_898311ef.png";
+import realEstateSalesImg from "@assets/generated_images/Real_estate_sales_service_ab185173.png";
+import rentalLeasingImg from "@assets/generated_images/Rental_leasing_service_2be045f2.png";
+import investmentAdvisoryImg from "@assets/generated_images/Investment_advisory_service_07764d92.png";
+import valuationServicesImg from "@assets/generated_images/Valuation_service_9ffafc1e.png";
 
 export default function Services() {
   const services = [
