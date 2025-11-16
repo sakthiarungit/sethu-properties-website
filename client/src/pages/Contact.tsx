@@ -80,22 +80,22 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen">
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
+      <section className="py-12 sm:py-16 md:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-contact-title">Contact Us</h1>
-            <p className="text-xl text-muted-foreground">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6" data-testid="text-contact-title">Contact Us</h1>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground px-4">
               Get in touch with us for a free consultation. We're here to help with all your property needs.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-12 max-w-6xl mx-auto">
             <div>
-              <h2 className="text-3xl font-bold mb-6" data-testid="text-form-title">Send Us a Message</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6" data-testid="text-form-title">Send Us a Message</h2>
               <Card>
                 <CardContent className="pt-6">
                   <Form {...form}>

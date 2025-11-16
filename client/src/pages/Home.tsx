@@ -106,7 +106,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[60vh] sm:h-[70vh] md:h-[80vh] min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <img
             src={heroImage}
@@ -116,25 +116,25 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 text-center text-white">
-          <Badge className="mb-6 bg-accent text-accent-foreground border-0" data-testid="badge-trust">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white">
+          <Badge className="mb-4 sm:mb-6 bg-accent text-accent-foreground border-0 text-xs sm:text-sm" data-testid="badge-trust">
             Trusted by 500+ Property Owners Worldwide
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" data-testid="text-hero-title">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight" data-testid="text-hero-title">
             Your Trusted Property Partner in South Tamil Nadu
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90" data-testid="text-hero-subtitle">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto text-white/90" data-testid="text-hero-subtitle">
             Transparent, tech-enabled property management and real estate services for NRIs, homeowners, and investors
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <Link href="/contact">
-              <Button size="lg" variant="default" className="bg-primary text-primary-foreground border border-primary-border text-base" data-testid="button-hero-consultation">
+              <Button size="lg" variant="default" className="bg-primary text-primary-foreground border border-primary-border text-sm sm:text-base" data-testid="button-hero-consultation">
                 Get Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
+                <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5" />
               </Button>
             </Link>
             <Link href="/services">
-              <Button size="lg" variant="outline" className="bg-background/10 backdrop-blur-md border-white/30 text-white hover:bg-background/20 text-base" data-testid="button-hero-services">
+              <Button size="lg" variant="outline" className="bg-background/10 backdrop-blur-md border-white/30 text-white hover:bg-background/20 text-sm sm:text-base" data-testid="button-hero-services">
                 Explore Services
               </Button>
             </Link>
@@ -142,9 +142,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {valuePropositions.map((prop, index) => (
               <Card key={index} className="hover-elevate" data-testid={`card-value-prop-${index}`}>
                 <CardHeader>
@@ -162,16 +162,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-services-title">Our Services</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-testid="text-services-title">Our Services</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Comprehensive property solutions designed to make ownership and investment stress-free
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {services.map((service, index) => (
               <Card key={index} className="hover-elevate" data-testid={`card-service-${index}`}>
                 <CardHeader>
@@ -194,16 +194,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-how-it-works-title">How It Works</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-testid="text-how-it-works-title">How It Works</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               A simple, transparent process from consultation to ongoing support
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
             {steps.map((step, index) => (
               <div key={index} className="text-center" data-testid={`step-${index}`}>
                 <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4">
@@ -225,16 +225,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-service-areas-title">Our Service Areas</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 bg-muted/30">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-testid="text-service-areas-title">Our Service Areas</h2>
+            <p className="text-sm sm:text-base md:text-lg text-muted-foreground max-w-2xl mx-auto px-4">
               Serving property owners across South Tamil Nadu
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5 md:gap-6">
             {areas.map((area, index) => (
               <Card key={index} className="hover-elevate" data-testid={`card-area-${index}`}>
                 <CardHeader>
@@ -257,23 +257,23 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <section className="py-12 sm:py-16 md:py-20 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
             {stats.map((stat, index) => (
               <div key={index} data-testid={`stat-${index}`}>
-                <div className="text-5xl font-bold mb-2">{stat.value}</div>
-                <div className="text-lg opacity-90">{stat.label}</div>
+                <div className="text-4xl sm:text-5xl font-bold mb-2">{stat.value}</div>
+                <div className="text-base sm:text-lg opacity-90">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-title">Ready to Get Started?</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 sm:mb-4" data-testid="text-cta-title">Ready to Get Started?</h2>
+          <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8 max-w-2xl mx-auto px-4">
             Schedule a free consultation with our property experts today
           </p>
           <Link href="/contact">
