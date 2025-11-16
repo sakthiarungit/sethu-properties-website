@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Shield, Smartphone, Home as HomeIcon, TrendingUp, FileCheck, Users, CheckCircle2, ArrowRight } from "lucide-react";
-import heroImage from "@assets/generated_images/Hero_image_modern_apartments_ef8358ce.png";
+
+const heroImage = "https://images.unsplash.com/photo-1580828343064-fde4fc206bc6?w=1600&h=900&fit=crop";
 
 export default function Home() {
   const valuePropositions = [

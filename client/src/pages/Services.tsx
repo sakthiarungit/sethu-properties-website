@@ -2,11 +2,12 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Home, Building2, Users, TrendingUp, FileCheck, CheckCircle2, ArrowRight } from "lucide-react";
-import propertyManagementImg from "@assets/generated_images/Property_management_service_898311ef.png";
-import realEstateSalesImg from "@assets/generated_images/Real_estate_sales_service_ab185173.png";
-import rentalLeasingImg from "@assets/generated_images/Rental_leasing_service_2be045f2.png";
-import investmentAdvisoryImg from "@assets/generated_images/Investment_advisory_service_07764d92.png";
-import valuationServicesImg from "@assets/generated_images/Valuation_service_9ffafc1e.png";
+
+const propertyManagementImg = "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400&h=300&fit=crop";
+const realEstateSalesImg = "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=400&h=300&fit=crop";
+const rentalLeasingImg = "https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?w=400&h=300&fit=crop";
+const investmentAdvisoryImg = "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop";
+const valuationServicesImg = "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=400&h=300&fit=crop";
 
 export default function Services() {
   const services = [
