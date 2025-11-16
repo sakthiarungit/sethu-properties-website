@@ -10,8 +10,8 @@ export function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="Sethu Properties" className="h-8 sm:h-9 w-auto" />
-              <span className="text-base sm:text-lg font-bold">Sethu Properties</span>
+              <img src="/logo.png" alt="Sethu Properties" className="h-6 w-auto" />
+              <span className="text-base font-bold">Sethu Properties</span>
             </div>
             <p className="text-xs sm:text-sm text-gray-300 mb-5">
               Your trusted property partner in South Tamil Nadu, delivering transparent and tech-enabled real estate services.

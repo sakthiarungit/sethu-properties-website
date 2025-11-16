@@ -31,9 +31,9 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex h-14 sm:h-16 items-center justify-between">
           <Link href="/" data-testid="link-home">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <img src="/logo.png" alt="Sethu Properties" className="h-8 sm:h-9 w-auto" />
-              <span className="text-lg sm:text-xl font-bold text-gray-900 hidden sm:inline">Sethu Properties</span>
+            <div className="flex items-center gap-2">
+              <img src="/logo.png" alt="Sethu Properties" className="h-6 w-auto" />
+              <span className="text-base sm:text-lg font-bold text-gray-900 hidden sm:inline">Sethu Properties</span>
             </div>
           </Link>
 

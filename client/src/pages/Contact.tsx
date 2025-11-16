@@ -99,11 +99,11 @@ export default function Contact() {
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             {/* Contact Form */}
-            <div>
+            <div className="max-w-2xl">
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" data-testid="text-form-title">
                 Send Us a Message
               </h2>
-              <Card className="border border-gray-200">
+              <Card className="border border-gray-200 w-full">
                 <CardContent className="pt-6 sm:pt-8">
                   <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5 sm:space-y-6">
@@ -235,11 +235,11 @@ export default function Contact() {
             </div>
 
             {/* Contact Information */}
-            <div>
+            <div className="max-w-2xl">
               <h2 className="text-2xl sm:text-3xl font-bold mb-6 sm:mb-8" data-testid="text-contact-info-title">
                 Contact Information
               </h2>
-              <div className="space-y-4 sm:space-y-6">
+              <div className="space-y-4 sm:space-y-6 w-full">
                 {contactInfo.map((info, index) => (
                   <Card key={index} className="border border-gray-200 hover:shadow-lg transition-shadow" data-testid={`card-contact-info-${index}`}>
                     <CardHeader>
