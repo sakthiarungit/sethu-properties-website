@@ -83,7 +83,7 @@ export default function Services() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">Our Services</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Our Services</h1>
             <p className="text-xl text-muted-foreground">
               Comprehensive property solutions designed to make ownership and investment stress-free
             </p>
@@ -96,7 +96,7 @@ export default function Services() {
         <section key={index} className={`py-20 ${index % 2 === 0 ? "bg-background" : "bg-muted/30"}`}>
           <div className="container mx-auto px-6">
             <div
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto ${
+              className={`grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-12 items-center max-w-6xl mx-auto ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
@@ -106,7 +106,7 @@ export default function Services() {
                   <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center">
                     <service.icon className="h-7 w-7 text-primary" />
                   </div>
-                  <h2 className="text-3xl font-bold">{service.title}</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold">{service.title}</h2>
                 </div>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   {service.description}
@@ -145,7 +145,7 @@ export default function Services() {
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-6 text-center max-w-2xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4">Ready to Experience Our Services?</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">Ready to Experience Our Services?</h2>
           <p className="text-lg mb-8 opacity-90">
             Let us help you manage, grow, and protect your property investments
           </p>

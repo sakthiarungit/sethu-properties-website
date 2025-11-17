@@ -84,7 +84,7 @@ export default function Contact() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6">Contact Us</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
             <p className="text-xl text-muted-foreground">
               Get in touch with us for a free consultation. We're here to help with all your property needs.
             </p>
@@ -98,7 +98,7 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">Send Us a Message</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6">Send Us a Message</h2>
               <Card>
                 <CardContent className="pt-6">
                   <Form {...form}>
@@ -230,7 +230,7 @@ export default function Contact() {
 
             {/* Contact Info */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">Contact Information</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6">Contact Information</h2>
               <div className="space-y-6">
                 {contactInfo.map((info, index) => (
                   <Card key={index} className="hover:shadow-lg transition-shadow">

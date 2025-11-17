@@ -43,7 +43,7 @@ export default function About() {
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-about-title">About Sethu Properties</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6" data-testid="text-about-title">About Sethu Properties</h1>
             <p className="text-xl text-muted-foreground">
               Building trust through transparent, technology-enabled property services
             </p>
