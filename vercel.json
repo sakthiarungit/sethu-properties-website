@@ -6,14 +6,15 @@
     "NODE_ENV": "production"
   },
   "outputDirectory": "dist",
-  "routes": [
+  "functions": {
+    "api/index.js": {
+      "runtime": "nodejs18.x"
+    }
+  },
+  "rewrites": [
     {
-      "src": "/api/(.*)",
-      "dest": "/api"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/api"
     }
   ]
 }
