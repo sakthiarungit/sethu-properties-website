@@ -257,15 +257,6 @@ export default function Contact() {
                   </Card>
                 ))}
               </div>
-
-              <Card className="mt-6 bg-primary text-primary-foreground border-0">
-                <CardHeader>
-                  <CardTitle>Why Choose Sethu Properties?</CardTitle>
-                  <CardDescription className="text-primary-foreground/80">
-                    We combine deep local knowledge with global standards, offering transparent, tech-enabled property services that you can trust.
-                  </CardDescription>
-                </CardHeader>
-              </Card>
             </div>
           </div>
         </div>
