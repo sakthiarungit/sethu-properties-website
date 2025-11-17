@@ -45,7 +45,7 @@ app.use((req: any, res, next) => {
 // Initialize routes
 let initialized = false;
 
-export default async (req: VercelRequest, res: VercelResponse) => {
+export default async (req: VercelRequest, res: VercelResponse<any>) => {
   // Initialize routes only once
   if (!initialized) {
     const server = createHttpServer(app);
@@ -60,6 +60,6 @@ export default async (req: VercelRequest, res: VercelResponse) => {
     initialized = true;
   }
 
-  // Handle the request
-  return app(req, res);
+  // Handle the request - cast to any to work with Vercel's Request/Response
+  return (app as any)(req as any, res as any);
 };
