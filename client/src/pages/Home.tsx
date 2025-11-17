@@ -1,9 +1,26 @@
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Building2, Shield, Smartphone, Home as HomeIcon, TrendingUp, FileCheck, Users, CheckCircle2, ArrowRight } from "lucide-react";
 import heroImage from "@assets/generated_images/Hero_image_modern_apartments_ef8358ce.png";
+import { ScrollReveal, ScrollRevealContainer } from "@/components/ScrollReveal";
+import { ScrollTriggerAnimation } from "@/components/ScrollReveal";
+import {
+  fadeInUp,
+  fadeInDown,
+  heroHeadline,
+  heroSubtitle,
+  heroButton,
+  staggerContainer,
+  staggerItem,
+  cardHover,
+  counterNumber,
+  listItemVariant,
+} from "@/lib/animations";
+import { useScroll } from "@/hooks/use-scroll";
 
 export default function Home() {
   const valuePropositions = [
@@ -104,122 +121,205 @@ export default function Home() {
     { value: "15+", label: "Years Experience" },
   ];
 
+  const [displayedStats, setDisplayedStats] = useState(false);
+
   return (
     <div className="min-h-screen">
       <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 z-0">
+        <motion.div className="absolute inset-0 z-0" animate={{ scale: 1.05 }} transition={{ duration: 20, repeat: Infinity, repeatType: "reverse" }}>
           <img
             src={heroImage}
             alt="Modern residential apartments in South Tamil Nadu"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
-        </div>
+          <motion.div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+        </motion.div>
 
         <div className="relative z-10 container mx-auto px-6 text-center text-white">
-          <Badge className="mb-6 bg-accent text-accent-foreground border-0" data-testid="badge-trust">
-            Trusted by 500+ Property Owners Worldwide
-          </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight" data-testid="text-hero-title">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+            <Badge className="mb-6 bg-accent text-accent-foreground border-0" data-testid="badge-trust">
+              Trusted by 500+ Property Owners Worldwide
+            </Badge>
+          </motion.div>
+
+          <motion.h1
+            className="text-5xl md:text-6xl font-bold mb-6 leading-tight"
+            variants={heroHeadline}
+            initial="hidden"
+            animate="visible"
+            data-testid="text-hero-title"
+          >
             Your Trusted Property Partner in South Tamil Nadu
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90" data-testid="text-hero-subtitle">
+          </motion.h1>
+
+          <motion.p
+            className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto text-white/90"
+            variants={heroSubtitle}
+            initial="hidden"
+            animate="visible"
+            data-testid="text-hero-subtitle"
+          >
             Transparent, tech-enabled property management and real estate services for NRIs, homeowners, and investors
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button size="lg" variant="default" className="bg-primary text-primary-foreground border border-primary-border text-base" data-testid="button-hero-consultation">
-                Get Free Consultation
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-            <Link href="/services">
-              <Button size="lg" variant="outline" className="bg-background/10 backdrop-blur-md border-white/30 text-white hover:bg-background/20 text-base" data-testid="button-hero-services">
-                Explore Services
-              </Button>
-            </Link>
-          </div>
+          </motion.p>
+
+          <motion.div
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            variants={staggerContainer}
+            initial="hidden"
+            animate="visible"
+          >
+            <motion.div variants={staggerItem}>
+              <Link href="/contact">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    size="lg"
+                    variant="default"
+                    className="bg-primary text-primary-foreground border border-primary-border text-base"
+                    data-testid="button-hero-consultation"
+                  >
+                    Get Free Consultation
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Button>
+                </motion.div>
+              </Link>
+            </motion.div>
+            <motion.div variants={staggerItem}>
+              <Link href="/services">
+                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="bg-background/10 backdrop-blur-md border-white/30 text-white hover:bg-background/20 text-base"
+                    data-testid="button-hero-services"
+                  >
+                    Explore Services
+                  </Button>
+                </motion.div>
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <ScrollRevealContainer variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {valuePropositions.map((prop, index) => (
-              <Card key={index} className="hover-elevate" data-testid={`card-value-prop-${index}`}>
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center mb-4">
-                    <prop.icon className="h-6 w-6 text-primary" />
-                  </div>
-                  <CardTitle className="text-xl">{prop.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base">{prop.description}</CardDescription>
-                </CardContent>
-              </Card>
+              <motion.div key={index} variants={staggerItem}>
+                <motion.div
+                  whileHover="hover"
+                  initial="rest"
+                  variants={cardHover}
+                  className="h-full"
+                >
+                  <Card className="hover-elevate h-full cursor-pointer transition-all duration-300" data-testid={`card-value-prop-${index}`}>
+                    <CardHeader>
+                      <motion.div
+                        className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center mb-4"
+                        whileHover={{ scale: 1.15, rotate: 5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <prop.icon className="h-6 w-6 text-primary" />
+                      </motion.div>
+                      <CardTitle className="text-xl">{prop.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-base">{prop.description}</CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
+          </ScrollRevealContainer>
         </div>
       </section>
 
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-services-title">Our Services</h2>
+          <ScrollReveal variants={fadeInUp} className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4" data-testid="text-services-title">
+              Our Services
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Comprehensive property solutions designed to make ownership and investment stress-free
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <ScrollRevealContainer variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service, index) => (
-              <Card key={index} className="hover-elevate" data-testid={`card-service-${index}`}>
-                <CardHeader>
-                  <div className="w-12 h-12 rounded-md bg-accent/10 flex items-center justify-center mb-4">
-                    <service.icon className="h-6 w-6 text-accent" />
-                  </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-base mb-4">{service.description}</CardDescription>
-                  <Link href={service.link}>
-                    <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80" data-testid={`button-learn-more-${index}`}>
-                      Learn More <ArrowRight className="ml-1 h-4 w-4" />
-                    </Button>
-                  </Link>
-                </CardContent>
-              </Card>
+              <motion.div key={index} variants={staggerItem}>
+                <motion.div
+                  whileHover="hover"
+                  initial="rest"
+                  variants={cardHover}
+                  className="h-full"
+                >
+                  <Card className="hover-elevate h-full cursor-pointer transition-all duration-300" data-testid={`card-service-${index}`}>
+                    <CardHeader>
+                      <motion.div
+                        className="w-12 h-12 rounded-md bg-accent/10 flex items-center justify-center mb-4"
+                        whileHover={{ scale: 1.15, rotate: -5 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <service.icon className="h-6 w-6 text-accent" />
+                      </motion.div>
+                      <CardTitle className="text-xl">{service.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-base mb-4">{service.description}</CardDescription>
+                      <Link href={service.link}>
+                        <motion.div whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
+                          <Button variant="ghost" className="p-0 h-auto text-primary hover:text-primary/80" data-testid={`button-learn-more-${index}`}>
+                            Learn More <ArrowRight className="ml-1 h-4 w-4" />
+                          </Button>
+                        </motion.div>
+                      </Link>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
+          </ScrollRevealContainer>
         </div>
       </section>
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-how-it-works-title">How It Works</h2>
+          <ScrollReveal variants={fadeInUp} className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4" data-testid="text-how-it-works-title">
+              How It Works
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               A simple, transparent process from consultation to ongoing support
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <ScrollRevealContainer variants={staggerContainer} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
             {steps.map((step, index) => (
-              <div key={index} className="text-center" data-testid={`step-${index}`}>
-                <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4">
-                  {step.number}
-                </div>
+              <motion.div key={index} variants={staggerItem} className="text-center" data-testid={`step-${index}`}>
+                <motion.div
+                  className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4 cursor-pointer"
+                  whileHover={{ scale: 1.2, boxShadow: "0 10px 25px rgba(0,0,0,0.2)" }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <motion.span animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }}>
+                    {step.number}
+                  </motion.span>
+                </motion.div>
                 <h3 className="font-semibold mb-2">{step.title}</h3>
                 <p className="text-sm text-muted-foreground">{step.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </ScrollRevealContainer>
 
           <div className="text-center mt-12">
             <Link href="/how-it-works">
-              <Button variant="outline" data-testid="button-view-details">
-                View Detailed Process
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="outline" data-testid="button-view-details">
+                  View Detailed Process
+                </Button>
+              </motion.div>
             </Link>
           </div>
         </div>
@@ -227,31 +327,44 @@ export default function Home() {
 
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-service-areas-title">Our Service Areas</h2>
+          <ScrollReveal variants={fadeInUp} className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4" data-testid="text-service-areas-title">
+              Our Service Areas
+            </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Serving property owners across South Tamil Nadu
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+          <ScrollRevealContainer variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
             {areas.map((area, index) => (
-              <Card key={index} className="hover-elevate" data-testid={`card-area-${index}`}>
-                <CardHeader>
-                  <CardTitle className="text-lg">{area.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <CardDescription className="text-sm">{area.description}</CardDescription>
-                </CardContent>
-              </Card>
+              <motion.div key={index} variants={staggerItem}>
+                <motion.div
+                  whileHover="hover"
+                  initial="rest"
+                  variants={cardHover}
+                  className="h-full"
+                >
+                  <Card className="hover-elevate h-full cursor-pointer transition-all duration-300 border-l-4 border-l-accent" data-testid={`card-area-${index}`}>
+                    <CardHeader>
+                      <CardTitle className="text-lg text-accent">{area.name}</CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <CardDescription className="text-sm">{area.description}</CardDescription>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </motion.div>
             ))}
-          </div>
+          </ScrollRevealContainer>
 
           <div className="text-center mt-12">
             <Link href="/service-areas">
-              <Button variant="outline" data-testid="button-view-all-areas">
-                View All Service Areas
-              </Button>
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button variant="outline" data-testid="button-view-all-areas">
+                  View All Service Areas
+                </Button>
+              </motion.div>
             </Link>
           </div>
         </div>
@@ -259,29 +372,53 @@ export default function Home() {
 
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+          <ScrollRevealContainer variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
             {stats.map((stat, index) => (
-              <div key={index} data-testid={`stat-${index}`}>
-                <div className="text-5xl font-bold mb-2">{stat.value}</div>
-                <div className="text-lg opacity-90">{stat.label}</div>
-              </div>
+              <motion.div key={index} variants={staggerItem} data-testid={`stat-${index}`}>
+                <ScrollTriggerAnimation
+                  threshold={0.5}
+                  onInView={() => {
+                    if (!displayedStats) {
+                      setDisplayedStats(true);
+                    }
+                  }}
+                >
+                  <motion.div
+                    className="text-5xl font-bold mb-2"
+                    initial={{ opacity: 0, scale: 0.5 }}
+                    animate={displayedStats ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.5 }}
+                    transition={{ duration: 0.6 }}
+                  >
+                    {stat.value}
+                  </motion.div>
+                  <div className="text-lg opacity-90">{stat.label}</div>
+                </ScrollTriggerAnimation>
+              </motion.div>
             ))}
-          </div>
+          </ScrollRevealContainer>
         </div>
       </section>
 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-title">Ready to Get Started?</h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Schedule a free consultation with our property experts today
-          </p>
-          <Link href="/contact">
-            <Button size="lg" className="bg-primary text-primary-foreground" data-testid="button-cta-contact">
-              Contact Us Now
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-          </Link>
+          <ScrollReveal variants={fadeInUp}>
+            <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-title">
+              Ready to Get Started?
+            </h2>
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Schedule a free consultation with our property experts today
+            </p>
+            <Link href="/contact">
+              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                <Button size="lg" className="bg-primary text-primary-foreground hover:shadow-lg transition-shadow" data-testid="button-cta-contact">
+                  Contact Us Now
+                  <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.3 }}>
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </motion.span>
+                </Button>
+              </motion.div>
+            </Link>
+          </ScrollReveal>
         </div>
       </section>
     </div>
