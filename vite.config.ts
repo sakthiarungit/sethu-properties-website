@@ -50,6 +50,15 @@ export default defineConfig({
     outDir: path.resolve(import.meta.dirname, "dist"),
     emptyOutDir: false,
     copyPublicDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor": ["react", "react-dom", "wouter"],
+          "ui": ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu"],
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
   },
   server: {
     fs: {
