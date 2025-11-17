@@ -2,7 +2,6 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactInquirySchema } from "@shared/schema";
-import { sendContactNotificationEmail, sendContactConfirmationEmail } from "./email";
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -10,16 +9,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertContactInquirySchema.parse(req.body);
       const inquiry = await storage.createContactInquiry(validatedData);
-
-      // Send emails asynchronously (don't wait for them to complete)
-      Promise.all([
-        sendContactNotificationEmail(inquiry),
-        sendContactConfirmationEmail(validatedData),
-      ]).catch((error) => {
-        console.error("[Routes] Error sending emails:", error);
-        // Don't fail the response - emails are non-critical
-      });
-
+      
       res.json({
         success: true,
         inquiry,
