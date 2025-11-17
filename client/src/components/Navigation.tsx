@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useScroll } from "@/hooks/use-scroll";
 import { mobileMenuSlide } from "@/lib/animations";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
   const [location] = useLocation();
@@ -76,7 +77,8 @@ export function Navigation() {
             ))}
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-2">
+            <ThemeToggle />
             <Link href="/contact" data-testid="button-cta-header">
               <motion.div
                 whileHover={{ scale: 1.05 }}
