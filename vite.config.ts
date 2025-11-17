@@ -1,32 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import fs from "fs";
-import tailwindcss from "@tailwindcss/vite";
+import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
 export default defineConfig({
   plugins: [
-    tailwindcss(),
     react(),
-    {
-      name: "copy-assets",
-      apply: "build",
-      enforce: "post",
-      async writeBundle() {
-        const srcDir = path.resolve(import.meta.dirname, "attached_assets/generated_images");
-        const destDir = path.resolve(import.meta.dirname, "dist");
-
-        if (fs.existsSync(srcDir)) {
-          const files = fs.readdirSync(srcDir);
-          files.forEach((file) => {
-            const src = path.join(srcDir, file);
-            const dest = path.join(destDir, file);
-            fs.copyFileSync(src, dest);
-          });
-          console.log(`✓ Copied ${files.length} asset files to dist`);
-        }
-      },
-    },
+    runtimeErrorOverlay(),
     ...(process.env.NODE_ENV !== "production" &&
     process.env.REPL_ID !== undefined
       ? [
@@ -42,23 +22,14 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path.resolve(import.meta.dirname, "shared"),
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
   root: path.resolve(import.meta.dirname, "client"),
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist"),
-    emptyOutDir: false,
-    copyPublicDir: true,
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          "vendor": ["react", "react-dom", "wouter"],
-          "ui": ["@radix-ui/react-dialog", "@radix-ui/react-dropdown-menu"],
-        },
-      },
-    },
-    chunkSizeWarningLimit: 1000,
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    emptyOutDir: true,
   },
   server: {
     fs: {
