@@ -18,9 +18,9 @@ app.use((req: any, res, next) => {
   let capturedJsonResponse: Record<string, any> | undefined = undefined;
 
   const originalResJson = res.json;
-  res.json = function (bodyJson: any, ...args: any[]) {
+  res.json = function (bodyJson: any) {
     capturedJsonResponse = bodyJson;
-    return originalResJson.apply(res, [bodyJson, ...args]);
+    return originalResJson.call(res, bodyJson);
   };
 
   res.on("finish", () => {
@@ -45,7 +45,7 @@ app.use((req: any, res, next) => {
 // Initialize routes
 let initialized = false;
 
-export default async (req: VercelRequest, res: VercelResponse<any>) => {
+export default async (req: VercelRequest, res: VercelResponse) => {
   // Initialize routes only once
   if (!initialized) {
     const server = createHttpServer(app);
@@ -60,6 +60,6 @@ export default async (req: VercelRequest, res: VercelResponse<any>) => {
     initialized = true;
   }
 
-  // Handle the request - cast to any to work with Vercel's Request/Response
-  return (app as any)(req as any, res as any);
+  // Handle the request - Express app is compatible with Vercel handler
+  return app(req as any, res as any);
 };
