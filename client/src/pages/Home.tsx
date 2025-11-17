@@ -117,14 +117,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
         </div>
 
-        <div className="relative z-10 container mx-auto px-6 text-center text-white max-w-4xl">
-          <Badge className="mb-6 bg-accent text-accent-foreground border-0">
+        <div className="relative z-10 container mx-auto px-4 sm:px-6 text-center text-white max-w-4xl">
+          <Badge className="mb-4 sm:mb-6 bg-accent text-accent-foreground border-0 text-xs sm:text-sm">
             Trusted by 500+ Property Owners Worldwide
           </Badge>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
             Your Trusted Property Partner in South Tamil Nadu
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-white/90">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-white/90">
             Transparent, tech-enabled property management and real estate services for NRIs, homeowners, and investors
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -207,7 +207,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 max-w-6xl mx-auto">
             {steps.map((step, index) => (
               <div key={index} className="text-center">
                 <div className="w-16 h-16 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-2xl font-bold mx-auto mb-4">
