@@ -1,17 +1,9 @@
-import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Navigation() {
   const [location] = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  // Close mobile menu when location changes
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location]);
 
   const navLinks = [
     { href: "/", label: "Home" },
@@ -40,7 +32,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="flex items-center gap-1">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>
                 <Button
@@ -53,8 +45,8 @@ export function Navigation() {
             ))}
           </nav>
 
-          {/* Desktop CTA and Theme Toggle */}
-          <div className="hidden md:flex items-center gap-3">
+          {/* CTA and Theme Toggle */}
+          <div className="flex items-center gap-3">
             <ThemeToggle />
             <Link href="/contact">
               <Button variant="default" className="bg-primary text-primary-foreground">
@@ -62,45 +54,9 @@ export function Navigation() {
               </Button>
             </Link>
           </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t bg-background">
-          <nav className="container mx-auto px-6 py-4 flex flex-col gap-2">
-            {navLinks.map((link) => (
-              <Link key={link.href} href={link.href}>
-                <Button
-                  variant={isActive(link.href) ? "secondary" : "ghost"}
-                  className="w-full justify-start text-sm font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {link.label}
-                </Button>
-              </Link>
-            ))}
-            <Link href="/contact">
-              <Button
-                variant="default"
-                className="w-full bg-primary text-primary-foreground mt-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Free Consultation
-              </Button>
-            </Link>
-          </nav>
-        </div>
-      )}
     </header>
   );
 }
