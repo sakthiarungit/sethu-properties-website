@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { Home, Building2, Users, TrendingUp, FileCheck, CheckCircle2, ArrowRight } from "lucide-react";
@@ -8,9 +6,6 @@ import realEstateSalesImg from "@assets/generated_images/Real_estate_sales_servi
 import rentalLeasingImg from "@assets/generated_images/Rental_leasing_service_2be045f2.png";
 import investmentAdvisoryImg from "@assets/generated_images/Investment_advisory_service_07764d92.png";
 import valuationServicesImg from "@assets/generated_images/Valuation_service_9ffafc1e.png";
-import { LazyImage } from "@/components/LazyImage";
-import { ScrollReveal, ScrollRevealContainer } from "@/components/ScrollReveal";
-import { fadeInUp, staggerContainer, staggerItem, cardHover } from "@/lib/animations";
 
 export default function Services() {
   const services = [
@@ -84,166 +79,88 @@ export default function Services() {
 
   return (
     <div className="min-h-screen">
+      {/* Hero Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-6">
-          <ScrollReveal variants={fadeInUp} className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl font-bold mb-6" data-testid="text-services-page-title">
-              Our Services
-            </h1>
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="text-5xl font-bold mb-6">Our Services</h1>
             <p className="text-xl text-muted-foreground">
               Comprehensive property solutions designed to make ownership and investment stress-free
             </p>
-          </ScrollReveal>
+          </div>
         </div>
       </section>
 
+      {/* Services Sections */}
       {services.map((service, index) => (
-        <motion.section
-          key={index}
-          className={`py-20 ${index % 2 === 0 ? "bg-background" : "bg-muted/30"}`}
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-        >
+        <section key={index} className={`py-20 ${index % 2 === 0 ? "bg-background" : "bg-muted/30"}`}>
           <div className="container mx-auto px-6">
             <div
               className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
-              <motion.div
-                className={index % 2 === 1 ? "lg:order-2" : ""}
-                initial={{ opacity: 0, x: index % 2 === 1 ? 50 : -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                viewport={{ once: true }}
-              >
-                <motion.div
-                  className="flex items-center gap-3 mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                  viewport={{ once: true }}
-                >
-                  <motion.div
-                    className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center"
-                    whileHover={{ scale: 1.15, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                  >
+              {/* Text Content */}
+              <div className={index % 2 === 1 ? "lg:order-2" : ""}>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-14 h-14 rounded-md bg-primary/10 flex items-center justify-center">
                     <service.icon className="h-7 w-7 text-primary" />
-                  </motion.div>
-                  <h2 className="text-3xl font-bold" data-testid={`text-service-${index}-title`}>
-                    {service.title}
-                  </h2>
-                </motion.div>
-
-                <motion.p
-                  className="text-lg text-muted-foreground mb-6 leading-relaxed"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
+                  </div>
+                  <h2 className="text-3xl font-bold">{service.title}</h2>
+                </div>
+                <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   {service.description}
-                </motion.p>
-
-                <ScrollRevealContainer variants={staggerContainer} className="space-y-3 mb-8">
+                </p>
+                <div className="space-y-3 mb-8">
                   {service.features.map((feature, featureIndex) => (
-                    <motion.div
-                      key={featureIndex}
-                      variants={staggerItem}
-                      className="flex items-start gap-3"
-                      data-testid={`feature-${index}-${featureIndex}`}
-                    >
-                      <motion.div
-                        className="flex-shrink-0 mt-1"
-                        whileHover={{ scale: 1.2 }}
-                        transition={{ duration: 0.3 }}
-                      >
+                    <div key={featureIndex} className="flex items-start gap-3">
+                      <div className="flex-shrink-0 mt-1">
                         <CheckCircle2 className="h-5 w-5 text-primary" />
-                      </motion.div>
+                      </div>
                       <p className="text-muted-foreground">{feature}</p>
-                    </motion.div>
+                    </div>
                   ))}
-                </ScrollRevealContainer>
-
+                </div>
                 <Link href="/contact">
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button
-                      className="bg-primary text-primary-foreground hover:shadow-lg transition-shadow"
-                      data-testid={`button-get-started-${index}`}
-                    >
-                      Get Started
-                      <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </motion.span>
-                    </Button>
-                  </motion.div>
+                  <Button className="bg-primary text-primary-foreground">
+                    Get Started
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
                 </Link>
-              </motion.div>
+              </div>
 
-              <motion.div
-                className={index % 2 === 1 ? "lg:order-1" : ""}
-                initial={{ opacity: 0, x: index % 2 === 1 ? -50 : 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-              >
-                <motion.div
-                  whileHover="hover"
-                  initial="rest"
-                  variants={cardHover}
-                  className="h-full"
-                >
-                  <LazyImage
-                    src={service.image}
-                    alt={service.title}
-                    className="rounded-lg shadow-lg w-full h-auto"
-                    aspectRatio="video"
-                    priority={index < 2}
-                    data-testid={`img-service-${index}`}
-                  />
-                </motion.div>
-              </motion.div>
+              {/* Image */}
+              <div className={index % 2 === 1 ? "lg:order-1" : ""}>
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="rounded-lg shadow-lg w-full h-auto object-cover"
+                />
+              </div>
             </div>
           </div>
-        </motion.section>
+        </section>
       ))}
 
-      <motion.section
-        className="py-20 bg-primary text-primary-foreground"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-      >
-        <div className="container mx-auto px-6 text-center">
-          <ScrollReveal variants={fadeInUp}>
-            <h2 className="text-4xl font-bold mb-4" data-testid="text-cta-services-title">
-              Ready to Experience Our Services?
-            </h2>
-            <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90">
-              Let us help you manage, grow, and protect your property investments
-            </p>
-            <Link href="/contact">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0"
-                  data-testid="button-cta-services"
-                >
-                  Schedule Free Consultation
-                  <motion.span initial={{ x: 0 }} whileHover={{ x: 5 }} transition={{ duration: 0.2 }}>
-                    <ArrowRight className="ml-2 h-5 w-5" />
-                  </motion.span>
-                </Button>
-              </motion.div>
-            </Link>
-          </ScrollReveal>
+      {/* CTA Section */}
+      <section className="py-20 bg-primary text-primary-foreground">
+        <div className="container mx-auto px-6 text-center max-w-2xl mx-auto">
+          <h2 className="text-4xl font-bold mb-4">Ready to Experience Our Services?</h2>
+          <p className="text-lg mb-8 opacity-90">
+            Let us help you manage, grow, and protect your property investments
+          </p>
+          <Link href="/contact">
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-primary-foreground text-primary hover:bg-primary-foreground/90 border-0"
+            >
+              Schedule Free Consultation
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </Link>
         </div>
-      </motion.section>
+      </section>
     </div>
   );
 }
