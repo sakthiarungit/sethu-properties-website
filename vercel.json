@@ -8,7 +8,6 @@
   "outputDirectory": "dist/public",
   "functions": {
     "api/index.ts": {
-      "runtime": "nodejs20.x",
       "maxDuration": 30,
       "includeFiles": "{server/**/*,shared/**/*}"
     }
