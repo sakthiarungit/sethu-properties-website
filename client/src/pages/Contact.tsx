@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { apiRequest } from "@/lib/queryClient";
-import { Mail, Phone, MapPin, Clock, Loader2 } from "lucide-react";
+import { Mail, Phone, MapPin, Clock, Loader2, MessageCircle } from "lucide-react";
 
 export default function Contact() {
   const { toast } = useToast();
@@ -63,6 +63,12 @@ export default function Contact() {
       title: "Phone",
       content: "+91 98765 43210",
       link: "tel:+919876543210",
+    },
+    {
+      icon: MessageCircle,
+      title: "WhatsApp",
+      content: "+91 98765 43210",
+      link: "https://wa.me/919876543210",
     },
     {
       icon: MapPin,
