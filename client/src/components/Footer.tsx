@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Mail, Phone, MapPin, MessageCircle } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -21,14 +21,19 @@ export function Footer() {
                 <Mail className="h-4 w-4" />
                 info@sethuproperties.com
               </a>
-              <a href="tel:+919876543210" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-phone">
+              <div className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                +91 98765 43210
-              </a>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors" data-testid="link-footer-whatsapp">
-                <MessageCircle className="h-4 w-4" />
-                WhatsApp
-              </a>
+                <span className="text-muted-foreground">+91 98765 43210</span>
+              </div>
+              <div className="flex gap-2">
+                <a href="tel:+919876543210" className="text-muted-foreground hover:text-foreground transition-colors text-xs" data-testid="link-footer-phone">
+                  Call
+                </a>
+                <span className="text-muted-foreground">•</span>
+                <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-foreground transition-colors text-xs" data-testid="link-footer-whatsapp">
+                  WhatsApp
+                </a>
+              </div>
             </div>
           </div>
 

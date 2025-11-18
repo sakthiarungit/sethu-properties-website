@@ -11,15 +11,12 @@ export default function Contact() {
     },
     {
       icon: Phone,
-      title: "Phone",
+      title: "Phone & WhatsApp",
       content: "+91 98765 43210",
-      link: "tel:+919876543210",
-    },
-    {
-      icon: MessageCircle,
-      title: "WhatsApp",
-      content: "+91 98765 43210",
-      link: "https://wa.me/919876543210",
+      links: [
+        { text: "Call", url: "tel:+919876543210", icon: Phone },
+        { text: "WhatsApp", url: "https://wa.me/919876543210", icon: MessageCircle },
+      ],
     },
     {
       icon: MapPin,
@@ -62,9 +59,27 @@ export default function Contact() {
                       <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center flex-shrink-0">
                         <info.icon className="h-6 w-6 text-primary" />
                       </div>
-                      <div>
-                        <CardTitle className="text-lg mb-1">{info.title}</CardTitle>
-                        {info.link ? (
+                      <div className="flex-1">
+                        <CardTitle className="text-lg mb-2">{info.title}</CardTitle>
+                        {info.links ? (
+                          <div className="flex flex-col gap-2">
+                            <p className="text-muted-foreground text-sm mb-2">{info.content}</p>
+                            <div className="flex gap-2 flex-wrap">
+                              {info.links.map((action, actionIndex) => (
+                                <a
+                                  key={actionIndex}
+                                  href={action.url}
+                                  target={action.url.startsWith("http") ? "_blank" : undefined}
+                                  rel={action.url.startsWith("http") ? "noopener noreferrer" : undefined}
+                                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-md bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm font-medium"
+                                >
+                                  <action.icon className="h-4 w-4" />
+                                  {action.text}
+                                </a>
+                              ))}
+                            </div>
+                          </div>
+                        ) : info.link ? (
                           <a
                             href={info.link}
                             className="text-muted-foreground hover:text-foreground transition-colors"
