@@ -1,35 +1,43 @@
 /**
  * Email Configuration for Gmail SMTP
  *
- * List of email recipients for contact form submissions.
- * Add or remove emails from this list to manage who receives contact notifications.
+ * All configuration is managed via environment variables for easy updates without redeploying.
  *
- * To configure Gmail SMTP:
- * 1. Enable 2-Factor Authentication on your Google Account
- * 2. Generate an App Password at https://myaccount.google.com/apppasswords
- * 3. Add these environment variables to Vercel:
- *    - SMTP_HOST=smtp.gmail.com
- *    - SMTP_PORT=587
- *    - SMTP_USER=your-email@gmail.com
- *    - SMTP_PASSWORD=your-16-char-app-password
- *    - EMAIL_FROM=your-email@gmail.com
+ * To configure Gmail SMTP, set these environment variables in Vercel:
+ * - EMAIL_RECIPIENTS: Comma-separated list of recipient emails (e.g., "email1@example.com,email2@example.com")
+ * - SMTP_HOST: Gmail SMTP host (smtp.gmail.com)
+ * - SMTP_PORT: Gmail SMTP port (587)
+ * - SMTP_USER: Your Gmail address
+ * - SMTP_PASSWORD: Your 16-character App Password
+ * - EMAIL_FROM: Sender email address (optional)
+ *
+ * See GMAIL_SETUP.md for detailed configuration instructions.
  */
 
+/**
+ * Parse EMAIL_RECIPIENTS environment variable into array
+ * Expected format: "email1@example.com,email2@example.com"
+ */
+function parseRecipients(recipientsEnv: string | undefined): string[] {
+  if (!recipientsEnv) {
+    return [];
+  }
+  return recipientsEnv
+    .split(",")
+    .map((email) => email.trim())
+    .filter((email) => email.length > 0);
+}
+
 export const EMAIL_CONFIG = {
-  // List of recipient emails for contact form submissions
-  recipients: [
-    "s.umashankar@live.com",
-    // Add more emails below as needed:
-    // "other.email@example.com",
-    // "another.email@example.com",
-  ],
+  // List of recipient emails for contact form submissions (from environment variable)
+  recipients: parseRecipients(process.env.EMAIL_RECIPIENTS),
 
   // Email sender configuration
   from: process.env.EMAIL_FROM || "noreply@sethuproperties.com",
 
-  // SMTP configuration (uses environment variables)
+  // SMTP configuration (all from environment variables)
   smtp: {
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
+    host: process.env.SMTP_HOST,
     port: parseInt(process.env.SMTP_PORT || "587", 10),
     secure: process.env.SMTP_SECURE === "true", // true for 465, false for 587
     auth: {

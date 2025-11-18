@@ -10,22 +10,36 @@ When users submit the contact form, the application will:
 
 ## Email Recipients Configuration
 
+### Managing Recipients via Environment Variables
+
+The recipient emails are configured via the `EMAIL_RECIPIENTS` environment variable in Vercel. This means you can easily add or remove recipients without changing code.
+
 ### Adding/Removing Recipients
 
-Edit `server/config.ts` to manage the list of email recipients:
+1. Go to **Vercel Dashboard**
+2. Select your **Sethu Properties** project
+3. Go to **Settings** → **Environment Variables**
+4. Update the `EMAIL_RECIPIENTS` variable with comma-separated email addresses:
 
-```typescript
-export const EMAIL_CONFIG = {
-  recipients: [
-    "s.umashankar@live.com",
-    "other.email@example.com",      // Add more emails
-    "another.email@example.com",
-  ],
-  // ... rest of config
-};
+```
+EMAIL_RECIPIENTS=s.umashankar@live.com,other.email@example.com,another.email@example.com
 ```
 
-Simply add email addresses to the `recipients` array. Each contact form submission will be sent to all listed email addresses.
+### Examples
+
+**Single recipient:**
+```
+EMAIL_RECIPIENTS=s.umashankar@live.com
+```
+
+**Multiple recipients:**
+```
+EMAIL_RECIPIENTS=s.umashankar@live.com,john@example.com,support@example.com
+```
+
+**No spaces needed between emails** - they will be automatically trimmed.
+
+Each contact form submission will be sent to all listed email addresses.
 
 ## Gmail SMTP Setup (4 Steps)
 
@@ -72,6 +86,7 @@ EMAIL_FROM: your-email@gmail.com
 4. Add these variables:
 
 ```
+EMAIL_RECIPIENTS=s.umashankar@live.com
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_SECURE=false
@@ -79,6 +94,8 @@ SMTP_USER=your-email@gmail.com
 SMTP_PASSWORD=abcdefghijklmnop
 EMAIL_FROM=your-email@gmail.com
 ```
+
+**EMAIL_RECIPIENTS** is the most important - add all recipient email addresses here (comma-separated if multiple).
 
 5. Make sure variables are set for **Production**
 6. Click **Save**
